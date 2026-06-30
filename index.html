@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visual Bible Study - Inspired by Biblearc</title>
+  
+  <!-- Tailwind CSS via CDN (pinned) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  
+  <!-- Lucide icons (local copy for offline) -->
+  <script src="js/lucide.min.js"></script>
+  
+  <!-- PWA manifest (solo su HTTP, non serve su file://) -->
+  <meta name="theme-color" content="#4f46e5">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Visual Bible Study">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="icons/favicon.ico">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  
+  <!-- External styles -->
+  <link rel="stylesheet" href="style.css">
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-200 min-h-screen flex flex-col font-sans selection:bg-indigo-100 dark:selection:bg-indigo-800">
+
+  <header class="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 py-4 px-6 sticky top-0 z-50 shadow-sm">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
+      <div>
+        <h1 id="main-title" class="text-xl font-bold tracking-tight text-slate-900 dark:text-white" data-i18n="main_title">Visual Bible Study</h1>
+        <p id="main-subtitle" class="text-xs text-slate-500 dark:text-slate-400" data-i18n="main_subtitle">Analisi strutturale, logica e diagrammi dei testi biblici</p>
+      </div>
+      
+      <div class="flex items-center gap-3">
+        <div class="flex items-center bg-slate-100 dark:bg-slate-800 p-1 rounded-lg border border-slate-200 dark:border-slate-700 shadow-inner" role="group" aria-label="Language selector">
+          <button id="lang-it" onclick="app.changeLanguage('it')" class="px-2.5 py-1 text-xs font-bold rounded-md transition duration-150" aria-pressed="true">IT</button>
+          <button id="lang-en" onclick="app.changeLanguage('en')" class="px-2.5 py-1 text-xs font-bold rounded-md transition duration-150" aria-pressed="false">EN</button>
+        </div>
+
+        <button id="dark-mode-toggle" onclick="app.toggleDarkMode()" class="flex items-center gap-1.5 px-3 py-1.5 border border-slate-200 dark:border-slate-700 rounded-lg text-sm font-medium hover:bg-slate-50 dark:hover:bg-slate-800 transition" aria-label="Toggle dark mode">
+          <i data-lucide="moon" class="w-4 h-4 text-slate-500 dark:text-slate-400 dark-mode-icon"></i>
+        </button>
+
+        <button onclick="app.toggleAboutModal()" class="flex items-center gap-1.5 px-3 py-1.5 border border-slate-200 dark:border-slate-700 rounded-lg text-sm font-medium hover:bg-slate-50 dark:hover:bg-slate-800 transition" aria-label="About">
+          <i data-lucide="info" class="w-4 h-4 text-slate-500 dark:text-slate-400"></i>
+          <span data-i18n="btn_about" class="dark:text-slate-300">Info</span>
+        </button>
+
+        <button onclick="app.toggleHelpModal()" class="flex items-center gap-1.5 px-3 py-1.5 border border-slate-200 dark:border-slate-700 rounded-lg text-sm font-medium hover:bg-slate-50 dark:hover:bg-slate-800 transition" aria-label="Help guide">
+          <i data-lucide="help-circle" class="w-4 h-4 text-slate-500 dark:text-slate-400"></i>
+          <span data-i18n="btn_guide" class="dark:text-slate-300">Guida rapida</span>
+        </button>
+        <button onclick="app.triggerResetConfirmation()" class="flex items-center gap-1.5 px-3 py-1.5 bg-rose-50 dark:bg-rose-950 text-rose-600 dark:text-rose-400 rounded-lg text-sm font-semibold hover:bg-rose-100 dark:hover:bg-rose-900 transition" aria-label="Reset all">
+          <i data-lucide="trash-2" class="w-4 h-4"></i>
+          <span data-i18n="btn_reset">Reset totale</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-1 max-w-7xl w-full mx-auto p-4 lg:p-6 grid grid-cols-1 lg:grid-cols-12 gap-6">
+    
+    <!-- Left Panel: Controls -->
+    <section class="lg:col-span-4 space-y-6">
+      
+      <!-- Section 1: Text Input -->
+      <div class="bg-white dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
+        <div class="flex items-center gap-2 pb-2 border-b border-slate-100 dark:border-slate-800">
+          <i data-lucide="file-text" class="w-5 h-5 text-indigo-600 dark:text-indigo-400" aria-hidden="true"></i>
+          <h2 class="font-bold text-slate-900 dark:text-white" data-i18n="sect1_title">1. Inserisci il Testo</h2>
+        </div>
+        <p class="text-xs text-slate-500 dark:text-slate-400" data-i18n="sect1_desc">Scrivi o incolla un versetto. Ogni riga diventerà un blocco logico indipendente (proposizione).</p>
+        
+        <textarea id="bible-input" rows="5" class="w-full p-3 text-sm border border-slate-200 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-200 placeholder-slate-400 dark:placeholder-slate-500" placeholder="..." aria-label="Bible text input"></textarea>
+        <button onclick="app.parseText()" class="w-full flex items-center justify-center gap-2 py-2 px-4 bg-indigo-600 text-white rounded-lg font-semibold hover:bg-indigo-700 transition shadow-md shadow-indigo-100 dark:shadow-indigo-950">
+          <i data-lucide="split" class="w-4 h-4" aria-hidden="true"></i>
+          <span data-i18n="btn_split">Scomponi in Righe</span>
+        </button>
+      </div>
+
+      <!-- Section 2: Connect Propositions -->
+      <div class="bg-white dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
+        <div class="flex items-center gap-2 pb-2 border-b border-slate-100 dark:border-slate-800">
+          <i data-lucide="git-branch" class="w-5 h-5 text-indigo-600 dark:text-indigo-400" aria-hidden="true"></i>
+          <h2 class="font-bold text-slate-900 dark:text-white" data-i18n="sect2_title">2. Collega le Proposizioni</h2>
+        </div>
+        
+        <p class="text-xs text-slate-500 dark:text-slate-400" data-i18n="sect2_desc">Usa i pulsanti Da (Sorgente/i) e A (Destinazione/i) presenti su ogni riga a sinistra per definire i gruppi, poi clicca su "Disegna Arco".</p>
+
+        <div>
+          <label for="relation-type" class="block text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1" data-i18n="label_relation">Tipo di Relazione Logica</label>
+          <select id="relation-type" onchange="app.handleRelationTypeChange()" class="w-full p-2.5 border border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-200" aria-label="Relation type">
+          </select>
+        </div>
+
+        <div id="custom-relation-container" class="hidden animate-fadeIn space-y-1">
+          <label for="custom-relation-input" class="block text-xs font-semibold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider" data-i18n="label_custom_name">Nome Relazione Custom</label>
+          <input type="text" id="custom-relation-input" class="w-full p-2 border border-indigo-200 dark:border-indigo-800 rounded-lg text-sm outline-none focus:ring-2 focus:ring-indigo-500 bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-200" placeholder="..." aria-label="Custom relation name">
+        </div>
+
+        <div class="grid grid-cols-2 gap-2">
+          <button onclick="app.clearSelection()" class="py-2 px-3 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg font-semibold text-sm transition" data-i18n="btn_clear">
+            Pulisci Selezione
+          </button>
+          <button onclick="app.createArc()" class="flex items-center justify-center gap-1.5 py-2 px-3 bg-indigo-600 text-white rounded-lg font-semibold hover:bg-indigo-700 transition shadow-md shadow-indigo-100 dark:shadow-indigo-950 text-sm">
+            <i data-lucide="plus-circle" class="w-4 h-4" aria-hidden="true"></i>
+            <span data-i18n="btn_draw">Disegna Arco</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Section 3: Glossary -->
+      <div class="bg-white dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-3">
+        <button onclick="app.toggleGlossaryAccordion()" class="w-full flex items-center justify-between pb-1 border-b border-slate-100 dark:border-slate-800 text-left" aria-expanded="false" id="glossary-toggle">
+          <div class="flex items-center gap-2">
+            <i data-lucide="book" class="w-5 h-5 text-indigo-600 dark:text-indigo-400" aria-hidden="true"></i>
+            <h2 class="font-bold text-slate-900 dark:text-white" data-i18n="sect3_title">3. Glossario Relazioni</h2>
+          </div>
+          <i id="glossary-arrow" data-lucide="chevron-down" class="w-4 h-4 text-slate-500 dark:text-slate-400 transition-transform" aria-hidden="true"></i>
+        </button>
+        
+        <div id="glossary-content" class="hidden space-y-3" role="region" aria-labelledby="glossary-toggle">
+          <p class="text-xs text-slate-500 dark:text-slate-400" data-i18n="sect3_desc">Seleziona una relazione per consultarne la definizione teorica accademica:</p>
+          <select id="glossary-selector" onchange="app.showGlossaryDefinition()" class="w-full p-2 border border-slate-200 dark:border-slate-700 rounded-lg text-xs focus:ring-1 focus:ring-indigo-500 outline-none bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-200" aria-label="Glossary">
+          </select>
+          
+          <div id="glossary-definition-box" class="hidden p-3 bg-indigo-50/50 dark:bg-indigo-950/50 rounded-lg border border-indigo-100 dark:border-indigo-900 space-y-1.5 animate-fadeIn" role="region" aria-live="polite">
+            <div class="flex justify-between items-center">
+              <span id="glossary-title" class="text-xs font-bold text-indigo-900 dark:text-indigo-300 uppercase">Relazione</span>
+              <span id="glossary-category" class="text-[10px] px-1.5 py-0.5 bg-indigo-100 dark:bg-indigo-900 text-indigo-700 dark:text-indigo-300 rounded-full font-semibold">Categoria</span>
+            </div>
+            <p id="glossary-text" class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Definizione...</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 4: Active Arcs -->
+      <div class="bg-white dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
+        <div class="flex items-center justify-between pb-2 border-b border-slate-100 dark:border-slate-800">
+          <div class="flex items-center gap-2">
+            <i data-lucide="list" class="w-5 h-5 text-indigo-600 dark:text-indigo-400" aria-hidden="true"></i>
+            <h2 class="font-bold text-slate-900 dark:text-white" data-i18n="arcs_active">Archi Attivi</h2>
+          </div>
+          <span id="arc-counter" class="bg-indigo-50 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 text-xs px-2.5 py-0.5 rounded-full font-bold" aria-live="polite">0</span>
+        </div>
+        <div id="arcs-list" class="space-y-2 max-h-48 overflow-y-auto pr-1 text-sm text-slate-500 dark:text-slate-400 text-center py-4" data-i18n="arcs_empty" role="list" aria-label="Active arcs list">
+          Nessun arco creato. Collega le frasi per iniziare.
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Right Panel: Canvas -->
+    <section class="lg:col-span-8 flex flex-col bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-sm min-h-[500px]">
+      
+      <div class="bg-slate-50 dark:bg-slate-800/50 border-b border-slate-200 dark:border-slate-800 px-6 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div class="flex items-center gap-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" aria-hidden="true"></span>
+          <h3 class="font-bold text-slate-800 dark:text-white" data-i18n="board_title">Lavagna di Studio Attiva</h3>
+        </div>
+        <div class="text-xs text-slate-500 dark:text-slate-400 font-medium" data-i18n="board_tip">
+          Passa con il mouse sulle righe: gli strumenti appariranno sulla sinistra per non rubare spazio al testo.
+        </div>
+      </div>
+
+      <div class="flex-1 overflow-x-auto min-h-[400px]" id="canvas-container" role="region" aria-label="Study board canvas">
+        <div class="p-6 relative" id="board-inner">
+          <svg id="arc-svg-canvas" class="arc-svg" aria-hidden="true"></svg>
+          <div id="empty-state" class="absolute inset-0 flex flex-col items-center justify-center text-center p-6 space-y-4 z-10">
+            <div class="w-16 h-16 bg-indigo-50 dark:bg-indigo-950 text-indigo-500 dark:text-indigo-400 rounded-full flex items-center justify-center mx-auto shadow-inner" aria-hidden="true">
+              <i data-lucide="book-open" class="w-8 h-8"></i>
+            </div>
+            <h4 class="font-bold text-slate-700 dark:text-slate-300" data-i18n="empty_title">La tua lavagna è vuota</h4>
+            <p class="text-sm text-slate-500 dark:text-slate-400 max-w-sm" data-i18n="empty_desc">Inserisci un testo biblico nel pannello di sinistra e premi "Scomponi in Righe" per iniziare lo studio strutturale.</p>
+          </div>
+          <div id="nodes-container" class="space-y-8 pl-[140px] pr-8 py-10 relative z-20"></div>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- Help Modal -->
+  <div id="help-modal" class="fixed inset-0 bg-slate-900/40 dark:bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4 z-50 hidden" role="dialog" aria-modal="true" aria-labelledby="help-modal-title">
+    <div class="bg-white dark:bg-slate-900 rounded-xl shadow-xl max-w-lg w-full max-h-[90vh] flex flex-col border border-slate-100 dark:border-slate-800 overflow-hidden">
+      <div class="p-6 pb-4 border-b border-slate-100 dark:border-slate-800 shrink-0">
+        <div class="flex justify-between items-center">
+          <h3 id="help-modal-title" class="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+            <i data-lucide="help-circle" class="text-indigo-600 dark:text-indigo-400" aria-hidden="true"></i>
+            <span data-i18n="guide_modal_title">Guida Rapida Visual Bible Study</span>
+          </h3>
+          <button onclick="app.toggleHelpModal()" class="help-close-btn text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300" aria-label="Close help modal">
+            <i data-lucide="x" class="w-5 h-5"></i>
+          </button>
+        </div>
+      </div>
+      <div class="text-sm text-slate-600 dark:text-slate-300 space-y-3 overflow-y-auto p-6 pt-4" id="guide-modal-body">
+      </div>
+      <div class="p-4 border-t border-slate-100 dark:border-slate-800 shrink-0">
+        <button onclick="app.toggleHelpModal()" class="w-full py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-semibold transition" data-i18n="btn_guide_confirm">
+          Ottimo, ho capito!
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- About/Info Modal -->
+  <div id="about-modal" class="fixed inset-0 bg-slate-900/40 dark:bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4 z-50 hidden" role="dialog" aria-modal="true" aria-labelledby="about-modal-title">
+    <div class="bg-white dark:bg-slate-900 rounded-xl shadow-xl max-w-lg w-full max-h-[90vh] flex flex-col border border-slate-100 dark:border-slate-800 overflow-hidden">
+      <div class="p-6 pb-4 border-b border-slate-100 dark:border-slate-800 shrink-0">
+        <div class="flex justify-between items-center">
+          <h3 id="about-modal-title" class="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+            <i data-lucide="info" class="text-indigo-600 dark:text-indigo-400" aria-hidden="true"></i>
+            <span data-i18n="about_modal_title">Informazioni</span>
+          </h3>
+          <button onclick="app.toggleAboutModal()" class="about-close-btn text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300" aria-label="Close about modal">
+            <i data-lucide="x" class="w-5 h-5"></i>
+          </button>
+        </div>
+      </div>
+      <div class="text-sm text-slate-600 dark:text-slate-300 space-y-4 overflow-y-auto p-6 pt-4" id="about-modal-body">
+        <p data-i18n="about_modal_text">Visual Bible Study è un progetto senza scopo di lucro sviluppato con strumenti AI. È un esperimento personale, non è destinato alla diffusione di massa.</p>
+        <p data-i18n="about_modal_inspired">L'applicazione prende libera ispirazione da Biblearc riguardo l'utilizzo dell'elemento grafico degli archi per collegare preposizioni all'interno di passaggi biblici, con elenco di relazioni di utilizzo comune. Qualsiasi altro riferimento a elementi grafici presenti nell'app o similitudini nel codice sorgente dell'app "Biblearc" sono assolutamente non intenzionali e pura coincidenza.</p>
+        <p data-i18n="about_modal_developed">L'app è stata sviluppata tramite agenti AI da zero.</p>
+      </div>
+      <div class="p-4 border-t border-slate-100 dark:border-slate-800 shrink-0">
+        <button onclick="app.toggleAboutModal()" class="w-full py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-semibold transition" data-i18n="btn_close">
+          Chiudi
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Confirm Modal -->
+  <div id="confirm-modal" class="fixed inset-0 bg-slate-900/50 dark:bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4 z-50 hidden" role="dialog" aria-modal="true" aria-labelledby="confirm-title">
+    <div class="bg-white dark:bg-slate-900 rounded-2xl shadow-xl max-w-md w-full p-6 space-y-6 border border-slate-100 dark:border-slate-800">
+      <div class="flex items-start gap-4">
+        <div class="p-3 bg-amber-50 dark:bg-amber-950 text-amber-600 dark:text-amber-400 rounded-full flex-shrink-0" id="confirm-icon-container" aria-hidden="true">
+          <i data-lucide="alert-triangle" class="w-6 h-6"></i>
+        </div>
+        <div class="space-y-1">
+          <h3 class="text-lg font-bold text-slate-950 dark:text-white" id="confirm-title">Sei sicuro?</h3>
+          <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed" id="confirm-message">Questa azione è irreversibile.</p>
+        </div>
+      </div>
+      <div class="flex items-center justify-end gap-3 pt-2">
+        <button onclick="app.closeConfirmModal(false)" class="px-4 py-2 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-lg text-sm font-semibold transition" data-i18n="btn_cancel">
+          Annulla
+        </button>
+        <button onclick="app.closeConfirmModal(true)" class="px-4 py-2 bg-rose-600 text-white hover:bg-rose-700 rounded-lg text-sm font-semibold shadow-md shadow-rose-100 dark:shadow-rose-950 transition" id="confirm-action-btn" data-i18n="btn_confirm">
+          Sì, conferma
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- About Modal -->
+  <script>
+    // Lazy load lucide icons per modale About
+    if (window.lucide) {
+      window.lucide.createIcons();
+    }
+  </script>
+  <!-- External Scripts -->
+  <script src="js/relations.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

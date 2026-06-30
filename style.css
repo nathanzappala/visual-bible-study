@@ -1,0 +1,139 @@
+/* ============================================
+   Biblearc Simulator - Styles
+   ============================================ */
+
+/* Canvas & SVG */
+#canvas-container {
+  position: relative;
+  overflow-x: auto;
+}
+
+#canvas-inner {
+  position: relative;
+}
+
+.arc-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 30;
+}
+
+.interactive-path {
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+/* Animazione disegno archi */
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.anim-draw {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: draw 1.2s ease-out forwards;
+}
+
+/* Rende i label degli archi cliccabili */
+.arc-label-group {
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+/* Animazione fadeIn (mancante) */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+/* Area di testo editabile */
+.editable-box {
+  min-height: 1.5rem;
+  outline: none;
+  word-break: break-word;
+}
+
+.editable-box:focus {
+  background-color: #faf5ff;
+}
+
+/* Effetti di evidenziazione interattiva per archi */
+.node-highlight-src {
+  box-shadow: 0 0 15px rgba(99, 102, 241, 0.4) !important;
+  border-color: #6366f1 !important;
+  transform: scale(1.015);
+}
+
+.node-highlight-tgt {
+  box-shadow: 0 0 15px rgba(16, 185, 129, 0.4) !important;
+  border-color: #10b981 !important;
+  transform: scale(1.015);
+}
+
+/* Toast feedback */
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.animate-bounce {
+  animation: bounce 0.5s ease;
+}
+
+/* Scrollbar personalizzata per la lista archi */
+#arcs-list::-webkit-scrollbar {
+  width: 4px;
+}
+
+#arcs-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+#arcs-list::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 2px;
+}
+
+/* Transizioni fluide per modali */
+#help-modal,
+#confirm-modal {
+  transition: opacity 0.2s ease;
+}
+
+/* Stile per il selettore glossario */
+#glossary-selector option {
+  padding: 4px;
+}
+
+/* Miglioramento hover per le righe */
+.group:hover .group-hover\:opacity-100 {
+  opacity: 1;
+}
+
+/* Stile per il contenitore della lavagna */
+#nodes-container {
+  position: relative;
+  width: 100%;
+  z-index: 20;
+}
+
+/* Stile per il pulsante lingua attivo */
+.lang-active {
+  background-color: white;
+  color: #4f46e5;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
