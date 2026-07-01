@@ -36,12 +36,12 @@ const TRANSLATIONS = {
     btn_confirm: "Sì, conferma",
     btn_guide_confirm: "Ottimo, ho capito!",
     guide_modal_title: "Guida Rapida Visual Bible Study",
-    guide_modal_content: "<p><strong>Visual Bible Study</strong> è uno strumento per l'analisi strutturale dei testi biblici. Permette di scomporre un passo in proposizioni (righe) e collegarle con relazioni logiche, visualizzando il tutto su una lavagna interattiva.</p>\n\n<h4 class=\"font-bold text-slate-800 mt-3\">📖 1. Inserisci il Testo</h4>\n<p>Scrivi o incolla il testo biblico nell'area di input. Ogni riga diventerà un blocco logico indipendente.</p>\n\n<h4 class=\"font-bold text-slate-800 mt-3\">✂️ Scomponi in Righe</h4>\n<p>Clicca \"Scomponi in Righe\" per dividere il testo in proposizioni pronte per l'analisi.</p>\n\n<h4 class=\"font-bold text-slate-800 mt-3\">🔗 2. Collega le Proposizioni</h4>\n<p>Passa con il mouse su una riga: apparirà un menu a sinistra. Usa <strong>Da</strong> (Sorgente) e <strong>A</strong> (Destinazione) per selezionare le righe da collegare. Scegli il tipo di relazione logica (Serie, Causa, Scopo, ecc.) e clicca \"Disegna Arco\". Puoi anche creare relazioni personalizzate.</p>\n\n<h4 class=\"font-bold text-slate-800 mt-3\">✏️ Formattazione Testo</h4>\n<p>Seleziona una parola o frase, poi usa i pulsanti <strong>B</strong> (grassetto), <strong>U</strong> (sottolineato) o <strong>H</strong> (evidenzia) dal menu fluttuante.</p>\n\n<h4 class=\"font-bold text-slate-800 mt-3\">↔️ Indentazione</h4>\n<p>Usa le frecce sinistra/destra nel menu per aumentare o ridurre il rientro di una riga, creando una struttura gerarchica.</p>\n\n<h4 class=\"font-bold text-slate-800 mt-3\">📚 3. Glossario Relazioni</h4>\n<p>Il glossario spiega ogni tipo di relazione logica con definizioni accademiche. Consultalo per capire il significato di ogni abbreviazione.</p>\n\n<h4 class=\"font-bold text-slate-800 mt-3\">🗑️ Eliminazione</h4>\n<p>Clicca sulla <strong>X</strong> nel menu di una riga per eliminarla. Clicca sull'etichetta di un arco (o sulla X nella lista \"Archi Attivi\") per eliminare una relazione.</p>\n\n<h4 class=\"font-bold text-slate-800 mt-3\">🌐 Lingua e Reset</h4>\n<p>Usa i pulsanti IT/EN per cambiare lingua. Il pulsante \"Reset totale\" cancella tutto lo studio corrente.</p>",
+    guide_modal_content: "<p><strong>Visual Bible Study</strong> è uno strumento per l'analisi strutturale dei testi biblici. Permette di scomporre un passo in proposizioni (righe) e collegarle con relazioni logiche, visualizzando il tutto su una lavagna interattiva.</p>\n\n<h4 class=\"font-bold text-slate-800 dark:text-white mt-3\">📖 1. Inserisci il Testo</h4>\n<p>Scrivi o incolla il testo biblico nell'area di input. Ogni riga diventerà un blocco logico indipendente.</p>\n\n<h4 class=\"font-bold text-slate-800 mt-3\">✂️ Scomponi in Righe</h4>\n<p>Clicca \"Scomponi in Righe\" per dividere il testo in proposizioni pronte per l'analisi.</p>\n\n<h4 class=\"font-bold text-slate-800 mt-3\">🔗 2. Collega le Proposizioni</h4>\n<p>Passa con il mouse su una riga: apparirà un menu a sinistra. Usa <strong>Da</strong> (Sorgente) e <strong>A</strong> (Destinazione) per selezionare le righe da collegare. Scegli il tipo di relazione logica (Serie, Causa, Scopo, ecc.) e clicca \"Disegna Arco\". Puoi anche creare relazioni personalizzate.</p>\n\n<h4 class=\"font-bold text-slate-800 mt-3\">✏️ Formattazione Testo</h4>\n<p>Seleziona una parola o frase, poi usa i pulsanti <strong>B</strong> (grassetto), <strong>U</strong> (sottolineato) o <strong>H</strong> (evidenzia) dal menu fluttuante.</p>\n\n<h4 class=\"font-bold text-slate-800 mt-3\">↔️ Indentazione</h4>\n<p>Usa le frecce sinistra/destra nel menu per aumentare o ridurre il rientro di una riga, creando una struttura gerarchica.</p>\n\n<h4 class=\"font-bold text-slate-800 mt-3\">📚 3. Glossario Relazioni</h4>\n<p>Il glossario spiega ogni tipo di relazione logica con definizioni accademiche. Consultalo per capire il significato di ogni abbreviazione.</p>\n\n<h4 class=\"font-bold text-slate-800 mt-3\">🗑️ Eliminazione</h4>\n<p>Clicca sulla <strong>X</strong> nel menu di una riga per eliminarla. Clicca sull'etichetta di un arco (o sulla X nella lista \"Archi Attivi\") per eliminare una relazione.</p>\n\n<h4 class=\"font-bold text-slate-800 mt-3\">🌐 Lingua e Reset</h4>\n<p>Usa i pulsanti IT/EN per cambiare lingua. Il pulsante \"Reset totale\" cancella tutto lo studio corrente.</p>",
     alert_no_text: "Inserisci del testo per continuare!",
     alert_no_selection: "Seleziona almeno una riga come Sorgente (Da) e una come Destinazione (A)!",
     alert_custom_empty: "Inserisci un nome per la relazione personalizzata!",
     alert_reset_success: "Studio resettato con successo!",
-    confirm_reset_title: "Reset totale",
+    confirm_reset_title: "Reset completo",
     confirm_reset_msg: "Sei sicuro di voler resettare l'intero studio? Tutti gli archi ed i testi inseriti verranno eliminati permanentemente.",
     confirm_del_row_title: "Elimina frase",
     confirm_del_row_msg: "Sei sicuro di voler eliminare la riga {num}? Gli archi collegati verranno modificati o eliminati.",
@@ -67,9 +67,9 @@ const TRANSLATIONS = {
     btn_about: "Info",
     btn_close: "Chiudi",
     about_modal_title: "Informazioni",
-    about_modal_text: "Visual Bible Study è un progetto senza scopo di lucro sviluppato con strumenti AI. È un esperimento personale, non è destinato alla diffusione di massa.",
-    about_modal_inspired: "L'applicazione prende libera ispirazione da Biblearc riguardo l'utilizzo dell'elemento grafico degli archi per collegare preposizioni all'interno di passaggi biblici, con elenco di relazioni di utilizzo comune. Qualsiasi altro riferimento a elementi grafici presenti nell'app o similitudini nel codice sorgente dell'app \"Biblearc\" sono assolutamente non intenzionali e pura coincidenza.",
-    about_modal_developed: "L'app è stata sviluppata tramite agenti AI da zero."
+    about_modal_text: "Visual Bible Study è un progetto sperimentale a carattere personale e senza fini di lucro, escluso da qualsiasi logica di distribuzione commerciale o di massa.",
+    about_modal_inspired: "L'applicazione adotta, come libera ispirazione metodologica, il sistema di collegamento grafico delle proposizioni tramite archi tipico di Biblearc, insieme a un elenco di relazioni di uso comune. Si declina ogni associazione con il software originale: qualsiasi ulteriore somiglianza estetica, funzionale o nel codice sorgente è da considerarsi del tutto involontaria e frutto di coincidenze.",
+    about_modal_developed: "L'intero codice dell'applicazione è stato sviluppato ex novo tramite agenti di intelligenza artificiale."
   },
   en: {
     main_title: "Visual Bible Study",
@@ -100,12 +100,12 @@ const TRANSLATIONS = {
     btn_confirm: "Yes, confirm",
     btn_guide_confirm: "Great, I got it!",
     guide_modal_title: "Visual Bible Study Quick Guide",
-    guide_modal_content: "<p><strong>Visual Bible Study</strong> is a tool for structural analysis of biblical texts. It allows you to break down a passage into propositions (rows) and connect them with logical relationships, visualized on an interactive board.</p>\n\n<h4 class=\"font-bold text-slate-800 mt-3\">📖 1. Enter the Text</h4>\n<p>Write or paste the biblical text into the input area. Each line will become an independent logical block.</p>\n\n<h4 class=\"font-bold text-slate-800 mt-3\">✂️ Split into Lines</h4>\n<p>Click \"Split into Lines\" to divide the text into propositions ready for analysis.</p>\n\n<h4 class=\"font-bold text-slate-800 mt-3\">🔗 2. Connect Propositions</h4>\n<p>Hover over a row: a menu will appear on the left. Use <strong>From</strong> (Source) and <strong>To</strong> (Destination) to select the rows to connect. Choose the logical relationship type (Series, Cause, Purpose, etc.) and click \"Draw Arc\". You can also create custom relationships.</p>\n\n<h4 class=\"font-bold text-slate-800 mt-3\">✏️ Text Formatting</h4>\n<p>Select a word or phrase, then use the <strong>B</strong> (bold), <strong>U</strong> (underline) or <strong>H</strong> (highlight) buttons from the floating menu.</p>\n\n<h4 class=\"font-bold text-slate-800 mt-3\">↔️ Indentation</h4>\n<p>Use the left/right arrows in the menu to increase or decrease a row's indentation, creating a hierarchical structure.</p>\n\n<h4 class=\"font-bold text-slate-800 mt-3\">📚 3. Relationship Glossary</h4>\n<p>The glossary explains each logical relationship type with academic definitions. Consult it to understand the meaning of each abbreviation.</p>\n\n<h4 class=\"font-bold text-slate-800 mt-3\">🗑️ Deletion</h4>\n<p>Click the <strong>X</strong> in a row's menu to delete it. Click on an arc label (or the X in the \"Active Arcs\" list) to delete a relationship.</p>\n\n<h4 class=\"font-bold text-slate-800 mt-3\">🌐 Language and Reset</h4>\n<p>Use the IT/EN buttons to switch languages. The \"Total Reset\" button clears the entire current study.</p>",
+    guide_modal_content: "<p><strong>Visual Bible Study</strong> is a tool for structural analysis of biblical texts. It allows you to break down a passage into propositions (rows) and connect them with logical relationships, visualized on an interactive board.</p>\n\n<h4 class=\"font-bold text-slate-800 dark:text-white mt-3\">📖 1. Enter the Text</h4>\n<p>Write or paste the biblical text into the input area. Each line will become an independent logical block.</p>\n\n<h4 class=\"font-bold text-slate-800 mt-3\">✂️ Split into Lines</h4>\n<p>Click \"Split into Lines\" to divide the text into propositions ready for analysis.</p>\n\n<h4 class=\"font-bold text-slate-800 mt-3\">🔗 2. Connect Propositions</h4>\n<p>Hover over a row: a menu will appear on the left. Use <strong>From</strong> (Source) and <strong>To</strong> (Destination) to select the rows to connect. Choose the logical relationship type (Series, Cause, Purpose, etc.) and click \"Draw Arc\". You can also create custom relationships.</p>\n\n<h4 class=\"font-bold text-slate-800 mt-3\">✏️ Text Formatting</h4>\n<p>Select a word or phrase, then use the <strong>B</strong> (bold), <strong>U</strong> (underline) or <strong>H</strong> (highlight) buttons from the floating menu.</p>\n\n<h4 class=\"font-bold text-slate-800 mt-3\">↔️ Indentation</h4>\n<p>Use the left/right arrows in the menu to increase or decrease a row's indentation, creating a hierarchical structure.</p>\n\n<h4 class=\"font-bold text-slate-800 mt-3\">📚 3. Relationship Glossary</h4>\n<p>The glossary explains each logical relationship type with academic definitions. Consult it to understand the meaning of each abbreviation.</p>\n\n<h4 class=\"font-bold text-slate-800 mt-3\">🗑️ Deletion</h4>\n<p>Click the <strong>X</strong> in a row's menu to delete it. Click on an arc label (or the X in the \"Active Arcs\" list) to delete a relationship.</p>\n\n<h4 class=\"font-bold text-slate-800 mt-3\">🌐 Language and Reset</h4>\n<p>Use the IT/EN buttons to switch languages. The \"Total Reset\" button clears the entire current study.</p>",
     alert_no_text: "Please enter some text to continue!",
     alert_no_selection: "Select at least one row as Source (From) and one as Destination (To)!",
     alert_custom_empty: "Please enter a name for your custom relationship!",
     alert_reset_success: "Study successfully reset!",
-    confirm_reset_title: "Total Reset",
+    confirm_reset_title: "Complete reset",
     confirm_reset_msg: "Are you sure you want to reset the entire study? All arcs and texts will be permanently deleted.",
     confirm_del_row_title: "Delete Row",
     confirm_del_row_msg: "Are you sure you want to delete row {num}? Connected arcs will be modified or deleted.",
@@ -131,9 +131,9 @@ const TRANSLATIONS = {
     btn_about: "About",
     btn_close: "Close",
     about_modal_title: "About",
-    about_modal_text: "Visual Bible Study is a non-profit project developed using AI tools. It is a personal experiment, not intended for mass distribution.",
-    about_modal_inspired: "The application takes free inspiration from Biblearc regarding the use of the arc graphical element to connect prepositions within biblical passages, with a list of commonly used relationships. Any other references to graphic elements in the app or similarities in the source code of the \"Biblearc\" app are absolutely unintentional and pure coincidence.",
-    about_modal_developed: "The app was developed from scratch using AI agents."
+    about_modal_text: "Visual Bible Study is a personal, non-profit experimental project that falls outside of any commercial or mass distribution framework.",
+    about_modal_inspired: "The application adopts, as a free methodological inspiration, the graphical system for connecting propositions via arcs typical of Biblearc, including a list of commonly used relations. Any association with the original software is hereby disclaimed: any further visual, functional, or source-code similarities are completely involuntary and purely coincidental.",
+    about_modal_developed: "The entire code of the application was developed ex novo through the use of AI agents."
   }
 };
 
@@ -473,7 +473,7 @@ class BiblearcApp {
           fromBtn.className = `flex-1 py-1 text-xs font-bold rounded border transition-all ${
             isSource
               ? 'bg-indigo-600 text-white border-indigo-600 shadow-sm'
-              : 'bg-white text-indigo-600 border-indigo-200 hover:bg-indigo-50'
+              : 'bg-white dark:bg-slate-900 text-indigo-600 dark:text-indigo-400 border-indigo-200 dark:border-slate-700 hover:bg-indigo-50 dark:hover:bg-slate-800'
           }`;
           fromBtn.innerText = this.i18n.tool_from || 'Da';
         }
@@ -481,7 +481,7 @@ class BiblearcApp {
           toBtn.className = `flex-1 py-1 text-xs font-bold rounded border transition-all ${
             isTarget
               ? 'bg-emerald-600 text-white border-emerald-600 shadow-sm'
-              : 'bg-white text-emerald-600 border-emerald-200 hover:bg-emerald-50'
+              : 'bg-white dark:bg-slate-900 text-emerald-600 dark:text-emerald-400 border-emerald-200 dark:border-slate-700 hover:bg-emerald-50 dark:hover:bg-slate-800'
           }`;
           toBtn.innerText = this.i18n.tool_to || 'A';
         }
@@ -530,7 +530,7 @@ class BiblearcApp {
               class="btn-source flex-1 py-1 text-xs font-bold rounded border transition-all ${
                 isSource 
                 ? 'bg-indigo-600 text-white border-indigo-600 shadow-sm' 
-                : 'bg-white dark:bg-slate-800 text-indigo-600 dark:text-indigo-400 border-indigo-200 dark:border-indigo-800 hover:bg-indigo-50 dark:hover:bg-slate-700'
+                : 'bg-white dark:bg-slate-900 text-indigo-600 dark:text-indigo-400 border-indigo-200 dark:border-slate-700 hover:bg-indigo-50 dark:hover:bg-slate-800'
               }">
               ${dict.tool_from}
             </button>
@@ -538,7 +538,7 @@ class BiblearcApp {
               class="btn-target flex-1 py-1 text-xs font-bold rounded border transition-all ${
                 isTarget 
                 ? 'bg-emerald-600 text-white border-emerald-600 shadow-sm' 
-                : 'bg-white dark:bg-slate-800 text-emerald-600 dark:text-emerald-400 border-emerald-200 dark:border-emerald-800 hover:bg-emerald-50 dark:hover:bg-slate-700'
+                : 'bg-white dark:bg-slate-900 text-emerald-600 dark:text-emerald-400 border-emerald-200 dark:border-slate-700 hover:bg-emerald-50 dark:hover:bg-slate-800'
               }">
               ${dict.tool_to}
             </button>
@@ -853,7 +853,7 @@ class BiblearcApp {
       }
     });
 
-    const minCanvasWidth = Math.max(maxTextRight + 100, maxArcX + 100);
+    const minCanvasWidth = Math.max(maxTextRight + 220, maxArcX + 220);
     const minCanvasHeight = Math.max(container.scrollHeight, scrollContainer.clientHeight);
 
     svg.style.width = `${minCanvasWidth}px`;
@@ -966,8 +966,9 @@ class BiblearcApp {
 
       svg.appendChild(path);
 
-      const labelX = Math.max(actualStartX, actualEndX) + (curveOffset - 12);
-      const labelY = (actualStartY + actualEndY) / 2;
+      const midPoint = path.getPointAtLength(pathLength / 2);
+      const labelX = midPoint.x;
+      const labelY = midPoint.y - 12;
 
       const labelGroup = document.createElementNS("http://www.w3.org/2000/svg", "g");
       labelGroup.setAttribute("class", "arc-label-group cursor-pointer");
@@ -986,7 +987,7 @@ class BiblearcApp {
       rect.setAttribute("fill", colConfig.bg);
       rect.setAttribute("stroke", colConfig.stroke);
       rect.setAttribute("stroke-width", "1");
-      rect.setAttribute("class", "bg-label-rect shadow-sm transition hover:scale-105");
+      rect.setAttribute("class", "bg-label-rect shadow-sm transition");
 
       const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
       text.setAttribute("x", labelX);
@@ -1059,11 +1060,12 @@ class BiblearcApp {
           bbox.top >= containerBox.top
         );
         if (!isVisible) {
-        scrollContainer.scrollBy({
-          left: bbox.right - containerBox.right + 40,
-          top: 0,
-          behavior: 'smooth'
-        });
+          const targetLeft = Math.max(0, bbox.right - containerBox.right + 80);
+          scrollContainer.scrollTo({
+            left: targetLeft,
+            top: 0,
+            behavior: 'smooth'
+          });
         }
       }
     }

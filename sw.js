@@ -3,19 +3,19 @@
  * Abilita il funzionamento offline e l'installazione come PWA
  */
 
-const CACHE_NAME = 'biblearc-v3';
+const CACHE_NAME = 'biblearc-v4';
 
 // Risorse da precaricare all'installazione
 const PRECACHE_URLS = [
-  '/',
-  '/index.html',
-  '/style.css',
-  '/js/app.js',
-  '/js/relations.js',
-  '/js/lucide.min.js',
-  '/icons/icon-192.png',
-  '/icons/icon-512.png',
-  '/manifest.json',
+  './',
+  './index.html',
+  './style.css',
+  './js/app.js',
+  './js/relations.js',
+  './js/lucide.min.js',
+  './icons/icon-192.png',
+  './icons/icon-512.png',
+  './manifest.json',
   'https://cdn.tailwindcss.com'
 ];
 
