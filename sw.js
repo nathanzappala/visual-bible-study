@@ -13,6 +13,7 @@ const PRECACHE_URLS = [
   './js/app.js',
   './js/relations.js',
   './js/lucide.min.js',
+  './favicon.ico',
   './icons/icon-192-v2.png',
   './icons/icon-512-v2.png',
   './icons/icon-1024-v2.png',

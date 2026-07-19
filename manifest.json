@@ -5,7 +5,7 @@
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#f8fafc",
+  "background_color": "#0f172a",
   "theme_color": "#4f46e5",
   "orientation": "any",
   "lang": "it",
@@ -38,6 +38,18 @@
       "purpose": "maskable"
     },
     {
+      "src": "icons/icon-dark-1024-v2.png",
+      "sizes": "1024x1024",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-dark-1024-v2.png",
+      "sizes": "1024x1024",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
       "src": "icons/icon-1024-v2.png",
       "sizes": "1024x1024",
       "type": "image/png",
@@ -48,12 +60,6 @@
       "sizes": "1024x1024",
       "type": "image/png",
       "purpose": "maskable"
-    },
-    {
-      "src": "icons/icon-dark-1024-v2.png",
-      "sizes": "1024x1024",
-      "type": "image/png",
-      "purpose": "any maskable"
     },
     {
       "src": "icons/icon-tinted-dark-1024-v2.png",
