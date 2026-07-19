@@ -137,7 +137,7 @@ const TRANSLATIONS = {
   }
 };
 
-class BiblearcApp {
+class VisualBibleStudyApp {
   constructor() {
     // Stato globale
     this.propositions = [];
@@ -151,15 +151,33 @@ class BiblearcApp {
     this._debounceTimer = null;
 
     // Configurazioni
-    this.STORAGE_KEY = 'biblearc_sim_state';
-    this.LANG_KEY = 'biblearc_lang';
-    this.DARK_KEY = 'biblearc_dark';
+    this.STORAGE_KEY = 'visual_bible_study_state';
+    this.LANG_KEY = 'visual_bible_study_lang';
+    this.DARK_KEY = 'visual_bible_study_dark';
     this.MAX_INDENT = 6;
 
     this.init();
   }
 
+  _migrateStorageKeys() {
+    // Migrazione dalle vecchie chiavi localStorage (biblearc) alle nuove (visual_bible_study)
+    const oldKeys = [
+      { old: 'biblearc_sim_state', new: 'visual_bible_study_state' },
+      { old: 'biblearc_lang', new: 'visual_bible_study_lang' },
+      { old: 'biblearc_dark', new: 'visual_bible_study_dark' }
+    ];
+    oldKeys.forEach(({ old: oldKey, new: newKey }) => {
+      if (localStorage.getItem(oldKey) !== null && localStorage.getItem(newKey) === null) {
+        localStorage.setItem(newKey, localStorage.getItem(oldKey));
+        localStorage.removeItem(oldKey);
+      }
+    });
+  }
+
   async init() {
+    // Migrazione chiavi localStorage dal vecchio nome (biblearc) al nuovo
+    this._migrateStorageKeys();
+
     // Carica preferenza lingua
     const savedLang = localStorage.getItem(this.LANG_KEY);
     if (savedLang === 'it' || savedLang === 'en') {
@@ -1248,5 +1266,5 @@ class BiblearcApp {
 
 let app;
 document.addEventListener('DOMContentLoaded', () => {
-  app = new BiblearcApp();
+  app = new VisualBibleStudyApp();
 });

@@ -1,9 +1,9 @@
 /**
- * Biblearc Simulator - Service Worker
+ * Visual Bible Study - Service Worker
  * Abilita il funzionamento offline e l'installazione come PWA
  */
 
-const CACHE_NAME = 'biblearc-v6';
+const CACHE_NAME = 'visual-bible-study-v7';
 
 // Risorse da precaricare all'installazione
 const PRECACHE_URLS = [

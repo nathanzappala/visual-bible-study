@@ -1,5 +1,5 @@
 /**
- * Biblearc - Relazioni Logiche
+ * Visual Bible Study - Relazioni Logiche
  * Definizioni delle relazioni logiche con traduzioni e configurazioni colore
  */
 
