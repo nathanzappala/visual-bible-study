@@ -15,6 +15,14 @@ const PRECACHE_URLS = [
   './js/lucide.min.js',
   './icons/icon-192.png',
   './icons/icon-512.png',
+  './icons/icon-1024.png',
+  './icons/icon-dark-1024.png',
+  './icons/icon-tinted-dark-1024.png',
+  './icons/icon-tinted-light-1024.png',
+  './icons/apple-icon-180.png',
+  './icons/apple-icon-dark-180.png',
+  './icons/favicon-32.png',
+  './icons/favicon-dark-32.png',
   './manifest.json',
   'https://cdn.tailwindcss.com'
 ];
