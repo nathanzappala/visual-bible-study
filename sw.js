@@ -3,7 +3,7 @@
  * Abilita il funzionamento offline e l'installazione come PWA
  */
 
-const CACHE_NAME = 'biblearc-v4';
+const CACHE_NAME = 'biblearc-v5';
 
 // Risorse da precaricare all'installazione
 const PRECACHE_URLS = [
@@ -13,16 +13,16 @@ const PRECACHE_URLS = [
   './js/app.js',
   './js/relations.js',
   './js/lucide.min.js',
-  './icons/icon-192.png',
-  './icons/icon-512.png',
-  './icons/icon-1024.png',
-  './icons/icon-dark-1024.png',
-  './icons/icon-tinted-dark-1024.png',
-  './icons/icon-tinted-light-1024.png',
-  './icons/apple-icon-180.png',
-  './icons/apple-icon-dark-180.png',
-  './icons/favicon-32.png',
-  './icons/favicon-dark-32.png',
+  './icons/icon-192-v2.png',
+  './icons/icon-512-v2.png',
+  './icons/icon-1024-v2.png',
+  './icons/icon-dark-1024-v2.png',
+  './icons/icon-tinted-dark-1024-v2.png',
+  './icons/icon-tinted-light-1024-v2.png',
+  './icons/apple-icon-180-v2.png',
+  './icons/apple-icon-dark-180-v2.png',
+  './icons/favicon-32-v2.png',
+  './icons/favicon-dark-32-v2.png',
   './manifest.json',
   'https://cdn.tailwindcss.com'
 ];
